@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 17:52:28 by mzomeno-          #+#    #+#              #
-#    Updated: 2019/11/26 10:42:54 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/03/25 13:16:23 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,10 @@ CFLAGS	 +=	 -Werror -Wall -Wextra
 
 AR		 =	 ar -rcs
 
+TYPE_TRANS_DIR = type_transform
 
-SRC		 =	 ft_atoi.c \
+SRC		 =	 $(TYPE_TRANS_DIR)/ft_itoa.c \
+			$(TYPE_TRANS_DIR)/ft_atoi.c \
 			 ft_bzero.c \
 			 ft_calloc.c \
 			 ft_isalnum.c \
@@ -28,7 +30,6 @@ SRC		 =	 ft_atoi.c \
 			 ft_isascii.c \
 			 ft_isdigit.c \
 			 ft_isprint.c \
-			 ft_itoa.c \
 			 ft_memccpy.c \
 			 ft_memchr.c \
 			 ft_memcmp.c \

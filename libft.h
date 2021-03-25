@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:33:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2019/11/24 18:11:01 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/03/25 12:59:22 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ typedef struct		s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef enum	e_bool
+{
+	FALSE = 0,
+	TRUE = 1
+}				t_bool;
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *str, size_t n);

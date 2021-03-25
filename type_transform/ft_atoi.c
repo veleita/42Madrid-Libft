@@ -6,36 +6,35 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:41:21 by mzomeno-          #+#    #+#             */
-/*   Updated: 2019/11/19 23:58:22 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/03/25 13:05:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int i;
-	int sign;
+	int	ret;
+	int	sign;
 
 	sign = 1;
-	i = 0;
-	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f' ||
-			*str == '\r' || *str == ' ')
+	ret = 0;
+	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f'
+		|| *str == '\r' || *str == ' ')
 		str++;
-	if (*str == '+')
-		str++;
-	else if (*str == '-')
+	if (*str == '+' || *str == '-')
 	{
-		sign = -1;
 		str++;
+		if (*str == '-')
+			sign = -1;
 	}
-	while ('0' <= *str && *str <= '9')
+	while (ft_isdigit(*str))
 	{
-		if ('0' <= *(str + 1) && *(str + 1) <= '9')
-			i = (i + *str - '0') * 10;
+		if (ft_isdigit(*(str + 1)))
+			ret = (ret + (*str - '0')) * 10;
 		else
-			i += *str - '0';
+			ret += *str - '0';
 		str++;
 	}
-	return (i * sign);
+	return (ret * sign);
 }

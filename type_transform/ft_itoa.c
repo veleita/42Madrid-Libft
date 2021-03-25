@@ -6,54 +6,57 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 12:54:02 by mzomeno-          #+#    #+#             */
-/*   Updated: 2019/11/19 23:59:53 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/03/25 12:51:55 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_digits(int n)
+static int	count_digits(int n)
 {
 	int				digits;
-	unsigned int	nb;
+	unsigned int	n_cpy;
 
 	digits = 1;
+	n_cpy = n;
 	if (n == 0)
 		return (digits);
 	else if (n < 0)
 	{
-		nb = -n;
 		digits++;
-		while (nb /= 10)
-			digits++;
+		n_cpy = -n_cpy;
 	}
-	else
-		while (n /= 10)
-			digits++;
-	return (digits);
+	while (n_cpy)
+	{
+		n_cpy /= 10;
+		digits++;
+	}
+	return (digits - 1);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char			*ret;
 	int				digits;
-	unsigned int	nb;
+	unsigned int	n_cpy;
 
-	digits = ft_digits(n);
-	if (!(ret = malloc(digits + 1)))
+	digits = count_digits(n);
+	ret = malloc(digits);
+	if (ret == NULL)
 		return (NULL);
+	ft_bzero(ret, digits);
+	n_cpy = n;
 	if (n < 0)
 	{
 		ret[0] = '-';
-		nb = -n;
+		n_cpy = -n_cpy;
 	}
-	else
-		nb = n;
-	ret[digits--] = '\0';
+	ret[digits] = '\0';
+	digits--;
 	while (digits >= 0 && ret[digits] != '-')
 	{
-		ret[digits--] = nb % 10 + '0';
-		nb /= 10;
+		ret[digits--] = n_cpy % 10 + '0';
+		n_cpy /= 10;
 	}
 	return (ret);
 }
